@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Cutie 💖</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  background: #2b002b;
+  color: #ffb6d9;
+  display: flex;
+  justify-content: center;
+}
+
+/* ✨ GLOBAL GLOW TEXT */
+h1, h2, h3, p {
+  text-shadow:
+    0 0 5px rgba(255, 105, 180, 0.6),
+    0 0 10px rgba(255, 105, 180, 0.4),
+    0 0 20px rgba(255, 105, 180, 0.3);
+}
+
+/* 🌟 BIG GLOW (like 120%) */
+h1 {
+  font-size: 60px;
+  font-style: italic;
+  color: #ff7eb9;
+  text-shadow:
+    0 0 10px #ff4da6,
+    0 0 20px #ff4da6,
+    0 0 40px rgba(255, 77, 166, 0.8);
+}
+
+/* ✨ GOLDEN SPARKLES */
+.sparkles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.sparkles span {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffd700, #ffae00);
+  box-shadow: 
+    0 0 6px #ffd700,
+    0 0 12px #ffae00,
+    0 0 20px rgba(255, 215, 0, 0.8);
+  animation: sparkleMove linear infinite;
+}
+
+@keyframes sparkleMove {
+  0% { transform: translateY(100vh) scale(0.3); opacity: 0; }
+  30% { opacity: 1; transform: scale(1); }
+  100% { transform: translateY(-10vh) scale(0.3); opacity: 0; }
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  height: 100vh;
+  position: relative;
+  text-align: center;
+  padding: 20px;
+  z-index: 1;
+}
+
+.hidden { display: none; }
+
+.tag {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.btn {
+  background: linear-gradient(45deg, #ff4da6, #ff6ec7);
+  padding: 12px 25px;
+  border-radius: 25px;
+  border: none;
+  color: white;
+  font-size: 16px;
+  margin-top: 20px;
+  box-shadow: 0 0 10px #ff4da6;
+}
+
+.progress {
+  width: 100%;
+  height: 8px;
+  background: #555;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  width: 0%;
+  background: hotpink;
+}
+
+.card {
+  background: rgba(255,255,255,0.1);
+  padding: 15px;
+  border-radius: 15px;
+  margin: 10px 0;
+  box-shadow: 0 0 10px pink;
+}
+
+.envelope {
+  font-size: 80px;
+  cursor: pointer;
+}
+
+.letter {
+  background: white;
+  color: black;
+  padding: 20px;
+  border-radius: 20px;
+  animation: pop 0.5s ease;
+}
+
+
+@keyframes pop {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="sparkles"></div>
+
+<audio id="music" loop preload="auto">
+  <source src="love.mp3" type="audio/mp3">
+</audio>
+<script>
+function playMusic() {
+  let audio = document.getElementById("music");
+
+  audio.play().then(() => {
+    console.log("Music started ✅");
+  }).catch(err => {
+    console.log("Error:", err);
+  });
+}
+</script>
+<div class="container">
+
+<div id="s1">
+  <h2>Hey foram, cutiepie 💕</h2>
+  <p>Do you even know how cute you are?</p>
+  <button class="btn" onclick="playMusic(); next(1)">
+  let's check 🥰
+</button>
+</div>
+
+<div id="s2" class="hidden">
+  <p>Measuring your cuteness... ⏳</p>
+  <h1 id="percent">1%</h1>
+  <div class="progress"><div class="bar" id="bar"></div></div>
+  <button class="btn" onclick="next(2)">Continue →</button>
+</div>
+
+<div id="s3" class="hidden">
+  <h1>120%</h1>
+  <p>⚠ WARNING: TOO CUTE TO HANDLE</p>
+  <button class="btn" onclick="next(3)">Continue →</button>
+</div>
+
+<div id="s4" class="hidden">
+  <p>Tap each one to reveal ❤️</p>
+
+  <div class="card" onclick="reveal(this)">❤️</div>
+  <div class="card" onclick="reveal(this)">❤️</div>
+  <div class="card" onclick="reveal(this)">❤️</div>
+
+  <button class="btn hidden" id="goLetter" onclick="next(4)">Continue →</button>
+</div>
+
+<div id="s5" class="hidden">
+  <p>A little note for you 💌</p>
+  <div class="envelope" onclick="openLetter()">📩</div>
+</div>
+
+<div id="s6" class="hidden">
+  <div class="letter">
+
+    <img src="https://media.tenor.com/2roX3uxz_68AAAAM/cute-cat.gif" 
+         style="width:100px; border-radius:15px; margin-bottom:10px;">
+
+    <h3>For You ❤️</h3>
+
+    <p>
+      I'm really sorry, my love. I accidentally upset the most precious and adorable person in my life — you. 🥹
+
+      Please forgive me if I hurt you or wasted even a little of your precious time. I promise I didn't mean to. 🥺💕🥺
+
+      I LOVE YOU VERY MUCH💖
+    </p>
+
+    <p>Please forgive me 💖</p>
+
+  </div>
+
+ 
+</div>
+
+<div id="s7" class="hidden">
+  <h3>i love you 💖</h3>
+  <div style="font-size:100px;">❤️</div>
+</div>
+
+</div>
+
+<script>
+document.body.addEventListener("click", () => {
+  document.getElementById("music").play();
+}, { once: true });
+
+const sparkleContainer = document.querySelector(".sparkles");
+for (let i = 0; i < 50; i++) {
+  let s = document.createElement("span");
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.top = Math.random() * 100 + "vh";
+  s.style.animationDuration = (Math.random() * 3 + 2) + "s";
+  sparkleContainer.appendChild(s);
+}
+
+function next(step) {
+  document.getElementById("s"+step).classList.add("hidden");
+  document.getElementById("s"+(step+1)).classList.remove("hidden");
+
+  if(step === 1){
+    let i = 1;
+    let interval = setInterval(()=>{
+      i++;
+      percent.innerText = i+"%";
+      bar.style.width = i+"%";
+      if(i >= 120) clearInterval(interval);
+    },30);
+  }
+}
+
+let count = 0;
+function reveal(el){
+  if(el.innerText === "❤️"){
+    el.innerText = ["I messed up... and I'm really sorry for that.","I promise I'll be better for us😔","Please forgive me... You mean so much to me❤️"][count];
+    count++;
+  }
+  if(count === 3){
+    goLetter.classList.remove("hidden");
+  }
+}
+
+function openLetter(){
+  s5.classList.add("hidden");
+  s6.classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
